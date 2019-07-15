@@ -24,5 +24,7 @@ public class Card {
         this.number = number;
     }
 
-
+    public String toString() {
+        return this.suit + " " + this.number;
+    }
 }

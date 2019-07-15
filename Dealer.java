@@ -4,5 +4,4 @@ public class Dealer extends Gamer {
         super(id, deck);
     }
 
-
 }

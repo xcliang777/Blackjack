@@ -8,6 +8,23 @@ public class Gamer {
         this.deck = deck;
     }
 
+    /**
+     * Hit operation
+     * @return if action succeeds
+     */
+    public boolean hit() {
+        if (deck.getScore() > 21) return false;
+        deck.addCard(Pool.getRandomCard());
+        return true;
+    }
+
+    /**
+     * Clear the deck after each round
+     */
+    public void clearDeck() {
+        deck.clearDeck();
+    }
+
     public String getId() {
         return id;
     }
