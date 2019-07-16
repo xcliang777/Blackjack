@@ -114,7 +114,7 @@ public class Player extends Gamer {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(getId()+"\n");
+        sb.append(getId()+"'s card\n");
         sb.append(getDeck().toString(false));
         return sb.toString();
     }

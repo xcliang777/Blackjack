@@ -18,21 +18,19 @@ public class Round {
                 dealer.getDeck().addCard(Pool.getRandomCard());
             }
         }
-        System.out.println(player.getDeck().getScore());
+        //System.out.println(player.getDeck().getScore());
        // System.out.println("1111111111111111111111");
 
         //---------------------------------------------------------------------------
         //check blackjack and split
         Boolean blackjack = false;
         if (player.getDeck().checkBlackJack() == 1) {
-            System.out.println("Player's Card:");
-            System.out.println(player.getDeck().toString(false));
+            System.out.println(player);
             System.out.println("BlackJacked!");
             blackjack = true;
         }
         if (player.checkSplit(chip) && chip < player.getBank()) {
-            System.out.println("Player's Card:");
-            System.out.println(player.getDeck().toString(false));
+            System.out.println(player);
             System.out.println("Do you want to split? Please enter y/n");
             while(true) {
                 try {
@@ -84,11 +82,8 @@ public class Round {
         //---------------------------------------------------------------------------
         //get result
         if (bust1) {
-
-            System.out.println("Dealer's Card:");
-            System.out.println(dealer.getDeck().toString(false));
-            System.out.println("Player's Card:");
-            System.out.println(player.getDeck().toString(false));
+            System.out.println(player);
+            System.out.println(dealer.toString(false));
             System.out.println("Player bust. Dealer win.");
             winner = -1;
         } else if (dealer.getDeck().getScore() > 21) {
@@ -110,10 +105,8 @@ public class Round {
         if (player.getSplitList().getScore() > 0) {
             System.out.println("Get the result of split card");
             if (bust2) {
-                System.out.println("Dealer's Card:");
-                System.out.println(dealer.getDeck().toString(false));
-                System.out.println("Player's Card:");
-                System.out.println(player.getDeck().toString(false));
+                System.out.println(player);
+                System.out.println(dealer.toString(false));
                 System.out.println("Player bust. Dealer win.");
                 winner -= 1;
             } else if (dealer.getDeck().getScore() > 21) {
@@ -146,10 +139,8 @@ public class Round {
     public boolean makeMove(Player player, Dealer dealer, boolean lessThan21, int chip, boolean blackjack) {
         boolean ifDouble = false;
         while (lessThan21 && !ifDouble) {
-            System.out.println("Dealer's Card:");
-            System.out.println(dealer.getDeck().toString(true));
-            System.out.println("Player's Card:");
-            System.out.println(player.getDeck().toString(false));
+            System.out.println(player);
+            System.out.println(dealer.toString(true));
             if (blackjack) {
                 System.out.println("BlackJack!");
                 break;
@@ -170,19 +161,15 @@ public class Round {
             if (choice.equals("h")) {
                 lessThan21 = player.hit();
             } else if (choice.equals("s")) {
-                System.out.println("Dealer's Card:");
-                System.out.println(dealer.getDeck().toString(true));
-                System.out.println("Player's Card:");
-                System.out.println(player.getDeck().toString(false));
+                System.out.println(player);
+                System.out.println(dealer.toString(true));
                 break;
             } else if (choice.equals("d")) {
                 ifDouble = true;
                 lessThan21 = player.doubleUp(chip, 0);
                 if (lessThan21) {
-                    System.out.println("Dealer's Card:");
-                    System.out.println(dealer.getDeck().toString(true));
-                    System.out.println("Player's Card:");
-                    System.out.println(player.getDeck().toString(false));
+                    System.out.println(player);
+                    System.out.println(dealer.toString(true));
                 }
             }
         }
@@ -193,10 +180,8 @@ public class Round {
         boolean ifDouble = false;
         while (lessThan21 && !ifDouble) {
             System.out.println("Now playing the splitted card.");
-            System.out.println("Dealer's Card:");
-            System.out.println(dealer.getDeck().toString(true));
-            System.out.println("Player's Card:");
-            System.out.println(player.getSplitList().toString(false));
+            System.out.println(player);
+            System.out.println(dealer.toString(true));
             if (blackjack) {
                 System.out.println("BlackJack!");
                 break;
@@ -217,19 +202,15 @@ public class Round {
             if (choice.equals("h")) {
                 lessThan21 = player.hit(1);
             } else if (choice.equals("s")) {
-                System.out.println("Dealer's Card:");
-                System.out.println(dealer.getDeck().toString(true));
-                System.out.println("Player's Card:");
-                System.out.println(player.getDeck().toString(false));
+                System.out.println(player);
+                System.out.println(dealer.toString(true));
                 break;
             } else if (choice.equals("d")) {
                 ifDouble = true;
                 lessThan21 = player.doubleUp(chip, 1);
                 if (lessThan21) {
-                    System.out.println("Dealer's Card:");
-                    System.out.println(dealer.getDeck().toString(true));
-                    System.out.println("Player's Card:");
-                    System.out.println(player.getDeck().toString(false));
+                    System.out.println(player);
+                    System.out.println(dealer.toString(true));
                 }
             }
         }
@@ -240,13 +221,8 @@ public class Round {
         System.out.println("Dealer's turn.");
         while (dealer.getDeck().getScore() < 17) {
             dealer.getDeck().addCard(Pool.getRandomCard());
-//            System.out.println("Dealer's Card:");
-//            System.out.println(dealer.getDeck().toString(false));
-//            System.out.println("Player's Card:");
-//            System.out.println(player.getDeck().toString(false));
-            System.out.println(dealer.toString(false));
-            System.out.println("----------------------------");
-            System.out.println(player.toString());
+            System.out.println(player);
+            System.out.println(dealer.toString(true));
 
         }
     }
