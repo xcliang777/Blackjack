@@ -6,7 +6,7 @@ public class Dealer extends Gamer {
 
     public String toString(boolean ifHide) {
         StringBuilder sb = new StringBuilder();
-        sb.append(getId()+"\n");
+        sb.append(getId()+"'s cards\n");
         sb.append(getDeck().toString(ifHide));
         return sb.toString();
     }

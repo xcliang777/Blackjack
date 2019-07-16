@@ -222,7 +222,7 @@ public class Round {
         while (dealer.getDeck().getScore() < 17) {
             dealer.getDeck().addCard(Pool.getRandomCard());
             System.out.println(player);
-            System.out.println(dealer.toString(true));
+            System.out.println(dealer.toString(false));
 
         }
     }

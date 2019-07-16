@@ -70,10 +70,10 @@ public class Deck {
      */
     public String toString(boolean ifHide) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Current score: " + getScore() + "\n");
         for (int i = 0; i < list.size(); i++) {
             if (ifHide && i == 0) stringBuilder.append("XXXX: XX");
             else stringBuilder.append(list.get(i).toString());
+            stringBuilder.append("\n");
         }
         return stringBuilder.toString();
     }
