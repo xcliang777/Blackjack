@@ -7,7 +7,7 @@ public class Round {
     public int start(Player player, Dealer dealer, int chip) {
         scanner = new Scanner(System.in);
         int winner = 0;
-        System.out.println("1111111111111111111111");
+        //System.out.println("1111111111111111111111");
 
         //---------------------------------------------------------------------------
         //Deal
@@ -19,7 +19,7 @@ public class Round {
             }
         }
         System.out.println(player.getDeck().getScore());
-        System.out.println("1111111111111111111111");
+       // System.out.println("1111111111111111111111");
 
         //---------------------------------------------------------------------------
         //check blackjack and split
@@ -235,12 +235,15 @@ public class Round {
         System.out.println("Dealer's turn.");
         while (dealer.getDeck().getScore() < 17) {
             dealer.getDeck().addCard(Pool.getRandomCard());
-            System.out.println("Dealer's Card:");
-            System.out.println(dealer.getDeck().toString(false));
-            System.out.println("Player's Card:");
-            System.out.println(player.getDeck().toString(false));
-        }
+//            System.out.println("Dealer's Card:");
+//            System.out.println(dealer.getDeck().toString(false));
+//            System.out.println("Player's Card:");
+//            System.out.println(player.getDeck().toString(false));
+            System.out.println(dealer.toString(false));
+            System.out.println("----------------------------");
+            System.out.println(player.toString());
 
+        }
     }
 
 

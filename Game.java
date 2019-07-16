@@ -8,7 +8,7 @@ public class Game {
     private Dealer dealer;
     private Deck deckplayer;
     private Deck deckdealer;
-
+    private Pool pool;
     private boolean continuePlay = true;
     private static final String ERROR = "Invalid input, please try it again.";
 
@@ -29,6 +29,7 @@ public class Game {
         deckdealer = new Deck();
         player = new Player("player", deckplayer, 1000);
         dealer = new Dealer("dealer", deckdealer);//Initialize player and dealer.
+        pool = new Pool();
 
         //-----------------------------------------------------------------------
 
@@ -70,7 +71,7 @@ public class Game {
             if (winner == 0) {
 
             } else if (winner == 1) {
-                player.addbank(chip);
+                player.addBank(chip);
             } else if (winner == 2) {
 
             }

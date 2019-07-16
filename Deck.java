@@ -36,8 +36,6 @@ public class Deck {
             if (card.getValue() == -1) count++;
             else sum += card.getValue();
         }
-        System.out.println(sum);
-        System.out.println(count);
         score = count == 0 ? sum : aceCalculate(count, sum);
     }
 

@@ -43,6 +43,16 @@ public class Player extends Gamer {
     }
 
     /**
+     * Add money when player win
+     * @param amount amount of money user win
+     * @return if action is success
+     */
+    public boolean addBank(int amount) {
+        bank += amount;
+        return true;
+    }
+
+    /**
      * Hit operation
      * @param num the deck number you want to do the action
      * @return if action succeeds
@@ -100,5 +110,12 @@ public class Player extends Gamer {
     public void clearInfo() {
         super.clearDeck();
         splitList.clearDeck();
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getId()+"\n");
+        sb.append(getDeck().toString(false));
+        return sb.toString();
     }
 }

@@ -35,7 +35,7 @@ public class Pool {
      * @return Card with corresponding number and suit
      */
     private static Card int2Card (int i) {
-        return new Card(SUITS[i/13], NUMBER[i%13+1], i%13+1);
+        return new Card(SUITS[i/13], NUMBER[i%13], i%13+1);
     }
 
 
