@@ -68,12 +68,36 @@ public class Game {
 
             //-----------------------------------------------------------------------
             //calculate chip
+            if (winner == -2) {
+                System.out.println("You have lost $" + chip*2 + " in this round");
+            }
+            if (winner == -1) {
+                System.out.println("You have lost $" + chip + " in this round");
+                if (player.getSplitList().getScore() > 0) {
+                    player.addBank(chip);
+                }
+            }
             if (winner == 0) {
+                System.out.println("You have win $0 in this round");
+                ///win one, lose one
+                if (player.getSplitList().getScore() > 0) {
+                    player.addBank(chip * 2);
+                } else {///push one
+                    player.addBank(chip);
+                }
+            }
+            if (winner == 1) {
+                System.out.println("You have win $" + chip + " in this round");
+                if (player.getSplitList().getScore() > 0) {
+                    player.addBank(chip * 3);
+                } else {
+                    player.addBank(chip * 2);
+                }
 
-            } else if (winner == 1) {
-                player.addBank(chip);
-            } else if (winner == 2) {
-
+            }
+            if (winner == 2) {
+                System.out.println("You have win $" + chip*2 + " in this round");
+                player.addBank(chip * 4);
             }
 
             //-----------------------------------------------------------------------
