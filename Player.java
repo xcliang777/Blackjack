@@ -112,11 +112,11 @@ public class Player extends Gamer {
         splitList.clearDeck();
     }
 
-    public String toString() {
+    public String toString(boolean ifSplit) {
         StringBuilder sb = new StringBuilder();
         sb.append(getId()+"'s cards\n");
-        sb.append("Current score: " + getDeck().getScore() + "\n");
-        sb.append(getDeck().toString(false));
+        sb.append("Current score: " + (!ifSplit ? getDeck().getScore() : getSplitList().getScore()) + "\n");
+        sb.append(!ifSplit ? getDeck().toString(false) : getSplitList().toString(false));
         return sb.toString();
     }
 }

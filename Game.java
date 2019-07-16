@@ -41,6 +41,10 @@ public class Game {
                 try {
                     System.out.println("Please enter your bargaining chip(1~" + player.getBank() + "):");
                     chip = scanner.nextInt();
+                    if (chip <= 0){
+                        System.out.println(Game.ERROR);
+                        continue;
+                    }
 
                     if (player.payMoney(chip)) {
                         break;
@@ -50,6 +54,7 @@ public class Game {
                     }
                 }
                 catch (Exception e) {
+                    scanner.nextLine();
                     System.out.println(Game.ERROR);
                 }
 
@@ -68,6 +73,13 @@ public class Game {
 
             //-----------------------------------------------------------------------
             //calculate chip
+            for (int i = 0; i < 2; i++){
+                if (winner > 2) {
+                    chip = chip * 2;
+                    winner -= 10;
+                }
+            }
+
             if (winner == -2) {
                 System.out.println("You have lost $" + chip*2 + " in this round");
             }
