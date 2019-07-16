@@ -25,10 +25,14 @@ public class Round {
         //check blackjack and split
         Boolean blackjack = false;
         if (player.getDeck().checkBlackJack() == 1) {
+            System.out.println("Player's Card:");
+            System.out.println(player.getDeck().toString(false));
             System.out.println("BlackJacked!");
             blackjack = true;
         }
         if (player.checkSplit(chip) && chip < player.getBank()) {
+            System.out.println("Player's Card:");
+            System.out.println(player.getDeck().toString(false));
             System.out.println("Do you want to split? Please enter y/n");
             while(true) {
                 try {
@@ -36,9 +40,10 @@ public class Round {
                     if (splitOrNot.equals("n")) break;
                     else if (splitOrNot.equals("y")){
                         //if split, pay bet
-                        boolean paysplit = player.payMoney(chip);
+                        player.payMoney(chip);
                         player.split(chip);
                         player.getDeck().addCard(Pool.getRandomCard());
+                        break;
                     } else System.out.println("Invalid input, please enter again.");
                 } catch (Exception e) {
                     System.out.println("Invalid input, please enter again.");
