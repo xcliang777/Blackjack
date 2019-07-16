@@ -1,2 +1,2 @@
 # Blackjack
-A simple BlackJack game
+A advanced BlackJack game

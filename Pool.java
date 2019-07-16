@@ -4,6 +4,7 @@ public class Pool {
 
     private static int[] pool;
     private static final String[] SUITS = {"Spade", "Diamond", "Club", "Heart"};
+    private static final String[] NUMBER = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
 
     public Pool() {
         pool = new int[52];
@@ -34,7 +35,7 @@ public class Pool {
      * @return Card with corresponding number and suit
      */
     private static Card int2Card (int i) {
-        return new Card(SUITS[i/13], i%13+1);
+        return new Card(SUITS[i/13], NUMBER[i%13+1], i%13+1);
     }
 
 

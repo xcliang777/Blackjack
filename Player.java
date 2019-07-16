@@ -35,7 +35,7 @@ public class Player extends Gamer {
      * @return whether payment successful
      */
     public boolean payMoney(int amount) {
-        if (!(amount <= bank)) return false;
+        if (amount > bank) return false;
         else {
             bank -= amount;
             return true;
@@ -71,7 +71,7 @@ public class Player extends Gamer {
      * @return if action succeeds:
      */
     public boolean doubleUp(int amount, int num) {
-        if (!(amount <= bank)) return false;
+        if (amount > bank) return false;
         return hit(num);
     }
 
@@ -81,10 +81,17 @@ public class Player extends Gamer {
      * @return if action succeeds:
      */
     public boolean split(int amount) {
-        if (!(amount <= bank)) return false;
         splitList.addCard(super.getDeck().getList().get(0));
         super.getDeck().removeCard();
         return true;
+    }
+
+    /**
+     * check whether split action is available
+     * @return split availablity
+     */
+    public boolean checkSplit(int amount) {
+        return (amount > bank || super.getDeck().getList().size() == 2 && splitList.getList().size() == 0 && super.getDeck().getList().get(0).getValue() ==  super.getDeck().getList().get(1).getValue());
     }
 
     /**

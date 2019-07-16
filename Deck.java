@@ -7,7 +7,6 @@ public class Deck {
 
     public Deck() {
         this.list = new ArrayList<Card>();
-        this.score = calculateScore();
     }
 
     public List<Card> getList() {
@@ -30,12 +29,16 @@ public class Deck {
      * Calculate the score of current deck
      * @return deck score
      */
-    private int calculateScore() {
+    private void calculateScore() {
+        int count = 0;
         int sum = 0;
         for (Card card : list) {
-            sum += card.getNumber();
+            if (card.getValue() == -1) count++;
+            else sum += card.getValue();
         }
-        return sum;
+        System.out.println(sum);
+        System.out.println(count);
+        score = count == 0 ? sum : aceCalculate(count, sum);
     }
 
     /**
@@ -71,8 +74,38 @@ public class Deck {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
             if (ifHide && i == 0) stringBuilder.append("XXXX: XX");
-            else stringBuilder.append(list.get(i).toString());
+            else stringBuilder.append("\n" + list.get(i).toString());
         }
         return stringBuilder.toString();
+    }
+
+    /**
+     * Check if there is a blackjack or what type of blackjack it is
+     * @return checking result;
+     * -1: no blackjack
+     * 1; natural blackjack
+     * 2: non-natural blackjack
+     */
+    public int checkBlackJack() {
+        if (getScore() != 21) return -1;
+        return list.size() == 2 ? 1 : 2;
+    }
+
+    /**
+     *
+     * @param num number of ace
+     * @param residue rest sum
+     * @return final score
+     */
+    private int aceCalculate(int num, int residue) {
+        int[] conditions = new int[num+1];
+        for (int i = 0; i <= num; i++) {
+            conditions[i] = 11 * i + (num-i) + residue;
+        }
+        int result = conditions[0];
+        for (int i : conditions) {
+            if (i <= 21 && i > result) result = i;
+        }
+        return result;
     }
 }
